@@ -1,6 +1,6 @@
 /* ============================================
    StoneBridge Exit Readiness Assessment
-   Premium Styles
+   Premium Styles — Light & Dark Mode
    ============================================ */
 
 /* Base */
@@ -14,6 +14,10 @@ html {
     color: inherit;
 }
 
+.dark ::selection {
+    background-color: rgba(249, 115, 22, 0.25);
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
@@ -23,13 +27,25 @@ html {
     background: #f1f5f9;
 }
 
+.dark ::-webkit-scrollbar-track {
+    background: #0f172a;
+}
+
 ::-webkit-scrollbar-thumb {
     background: #cbd5e1;
     border-radius: 4px;
 }
 
+.dark ::-webkit-scrollbar-thumb {
+    background: #334155;
+}
+
 ::-webkit-scrollbar-thumb:hover {
     background: #94a3b8;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+    background: #475569;
 }
 
 /* ============================================
@@ -67,6 +83,12 @@ html {
     pointer-events: none;
 }
 
+.dark .tooltip-content {
+    background: #f8fafc;
+    color: #1e293b;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
 .tooltip-content::after {
     content: '';
     position: absolute;
@@ -75,6 +97,10 @@ html {
     transform: translateX(-50%);
     border: 6px solid transparent;
     border-top-color: #1e293b;
+}
+
+.dark .tooltip-content::after {
+    border-top-color: #f8fafc;
 }
 
 /* ============================================
@@ -93,6 +119,11 @@ html {
     background: white;
 }
 
+.dark .option-card {
+    border-color: #334155;
+    background: #1e293b;
+}
+
 .option-card:hover {
     border-color: #cbd5e1;
     background: #f8fafc;
@@ -100,10 +131,22 @@ html {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
 }
 
+.dark .option-card:hover {
+    border-color: #475569;
+    background: #334155;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
 .option-card.selected {
     border-color: #c2410c;
     background: #fff7ed;
     box-shadow: 0 4px 16px rgba(194, 65, 12, 0.08);
+}
+
+.dark .option-card.selected {
+    border-color: #f97316;
+    background: rgba(249, 115, 22, 0.1);
+    box-shadow: 0 4px 16px rgba(249, 115, 22, 0.1);
 }
 
 .option-card .radio-indicator {
@@ -117,9 +160,18 @@ html {
     position: relative;
 }
 
+.dark .option-card .radio-indicator {
+    border-color: #475569;
+}
+
 .option-card.selected .radio-indicator {
     border-color: #c2410c;
     background: #c2410c;
+}
+
+.dark .option-card.selected .radio-indicator {
+    border-color: #f97316;
+    background: #f97316;
 }
 
 .option-card.selected .radio-indicator::after {
@@ -141,11 +193,19 @@ html {
     line-height: 1.5;
 }
 
+.dark .option-card .option-text {
+    color: #e2e8f0;
+}
+
 .option-card .option-description {
     font-size: 13px;
     color: #64748b;
     margin-top: 2px;
     line-height: 1.4;
+}
+
+.dark .option-card .option-description {
+    color: #94a3b8;
 }
 
 /* ============================================
@@ -162,13 +222,26 @@ html {
     background: #e2e8f0;
 }
 
+.dark .category-dot.pending {
+    background: #334155;
+}
+
 .category-dot.active {
     background: #c2410c;
     box-shadow: 0 0 0 3px rgba(194, 65, 12, 0.15);
 }
 
+.dark .category-dot.active {
+    background: #f97316;
+    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2);
+}
+
 .category-dot.complete {
     background: #78716c;
+}
+
+.dark .category-dot.complete {
+    background: #a8a29e;
 }
 
 /* ============================================
@@ -228,9 +301,19 @@ html {
     transition: all 0.25s ease;
 }
 
+.dark .insight-card {
+    background: #1e293b;
+    border-color: #334155;
+}
+
 .insight-card:hover {
     border-color: #cbd5e1;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.dark .insight-card:hover {
+    border-color: #475569;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
 .insight-score {
@@ -248,9 +331,19 @@ html {
     color: #166534;
 }
 
+.dark .insight-score.excellent {
+    background: rgba(34, 197, 94, 0.15);
+    color: #86efac;
+}
+
 .insight-score.good {
     background: #dbeafe;
     color: #1e40af;
+}
+
+.dark .insight-score.good {
+    background: rgba(59, 130, 246, 0.15);
+    color: #93c5fd;
 }
 
 .insight-score.fair {
@@ -258,9 +351,19 @@ html {
     color: #92400e;
 }
 
+.dark .insight-score.fair {
+    background: rgba(234, 179, 8, 0.15);
+    color: #fcd34d;
+}
+
 .insight-score.needs-work {
     background: #fee2e2;
     color: #991b1b;
+}
+
+.dark .insight-score.needs-work {
+    background: rgba(239, 68, 68, 0.15);
+    color: #fca5a5;
 }
 
 /* ============================================
@@ -281,9 +384,19 @@ html {
     color: #991b1b;
 }
 
+.dark .tier-early {
+    background: rgba(239, 68, 68, 0.15);
+    color: #fca5a5;
+}
+
 .tier-building {
     background: #fef3c7;
     color: #92400e;
+}
+
+.dark .tier-building {
+    background: rgba(234, 179, 8, 0.15);
+    color: #fcd34d;
 }
 
 .tier-ready {
@@ -291,9 +404,19 @@ html {
     color: #1e40af;
 }
 
+.dark .tier-ready {
+    background: rgba(59, 130, 246, 0.15);
+    color: #93c5fd;
+}
+
 .tier-optimized {
     background: #dcfce7;
     color: #166534;
+}
+
+.dark .tier-optimized {
+    background: rgba(34, 197, 94, 0.15);
+    color: #86efac;
 }
 
 /* ============================================
@@ -337,13 +460,13 @@ html {
         margin: 0.75in;
         size: auto;
     }
-    
+
     body {
         background: white !important;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
     }
-    
+
     header,
     .print\:hidden,
     #landing-section,
@@ -352,46 +475,46 @@ html {
     .tooltip-trigger {
         display: none !important;
     }
-    
+
     #results-section {
         display: block !important;
     }
-    
+
     #results-section > div {
         max-width: 100% !important;
         padding: 0 !important;
     }
-    
+
     .bg-gradient-to-br {
         background: #1e293b !important;
     }
-    
+
     .shadow-lg,
     .shadow-sm,
     .shadow-xl {
         box-shadow: none !important;
     }
-    
+
     .rounded-2xl {
         border: 1px solid #e2e8f0 !important;
     }
-    
+
     /* Ensure charts print */
     canvas {
         max-height: 300px !important;
     }
-    
+
     /* Break page before footer */
     footer {
         page-break-before: avoid;
     }
-    
+
     .insight-card,
     .action-item,
     .bg-white {
         break-inside: avoid;
     }
-    
+
     h3 {
         page-break-after: avoid;
     }
@@ -404,24 +527,24 @@ html {
     .option-card {
         padding: 14px 16px;
     }
-    
+
     .option-card .option-text {
         font-size: 14px;
     }
-    
+
     .tooltip-content {
         width: 240px;
         left: auto;
         right: -10px;
         transform: translateY(4px);
     }
-    
+
     .tooltip-content::after {
         left: auto;
         right: 14px;
         transform: none;
     }
-    
+
     #score-number {
         font-size: 4rem !important;
     }
@@ -435,6 +558,12 @@ a:focus-visible,
 .option-card:focus-visible {
     outline: 2px solid #c2410c;
     outline-offset: 2px;
+}
+
+.dark button:focus-visible,
+.dark a:focus-visible,
+.dark .option-card:focus-visible {
+    outline-color: #f97316;
 }
 
 /* ============================================
@@ -451,6 +580,10 @@ a:focus-visible,
     z-index: 100;
 }
 
+.dark .processing-overlay {
+    background: rgba(15, 23, 42, 0.9);
+}
+
 .processing-spinner {
     width: 48px;
     height: 48px;
@@ -460,6 +593,32 @@ a:focus-visible,
     animation: spin 0.8s linear infinite;
 }
 
+.dark .processing-spinner {
+    border-color: #334155;
+    border-top-color: #f97316;
+}
+
 @keyframes spin {
     to { transform: rotate(360deg); }
+}
+
+/* ============================================
+   Theme Toggle Transition
+   ============================================ */
+html,
+body,
+header,
+section,
+div,
+span,
+p,
+h1,
+h2,
+h3,
+h4,
+button,
+a {
+    transition-property: color, background-color, border-color;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 }

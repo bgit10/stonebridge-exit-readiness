@@ -1027,6 +1027,7 @@ const AssessmentApp = (function() {
 
     function renderRadarChart(categoryScores) {
         const ctx = getEl('radar-chart').getContext('2d');
+        const isDark = document.documentElement.classList.contains('dark');
 
         if (radarChartInstance) {
             radarChartInstance.destroy();
@@ -1035,6 +1036,30 @@ const AssessmentApp = (function() {
         const labels = CATEGORIES.map(c => c.name);
         const data = CATEGORIES.map(c => Math.round(categoryScores[c.id]));
 
+        const colors = isDark ? {
+            fill: 'rgba(249, 115, 22, 0.15)',
+            stroke: '#f97316',
+            point: '#f97316',
+            pointBorder: '#1e293b',
+            grid: '#334155',
+            angleLines: '#334155',
+            pointLabels: '#94a3b8',
+            tickLabels: '#94a3b8',
+            tooltipBg: '#f8fafc',
+            tooltipText: '#1e293b'
+        } : {
+            fill: 'rgba(194, 65, 12, 0.12)',
+            stroke: '#c2410c',
+            point: '#c2410c',
+            pointBorder: '#fff',
+            grid: '#e2e8f0',
+            angleLines: '#e2e8f0',
+            pointLabels: '#475569',
+            tickLabels: '#94a3b8',
+            tooltipBg: '#1e293b',
+            tooltipText: '#e2e8f0'
+        };
+
         radarChartInstance = new Chart(ctx, {
             type: 'radar',
             data: {
@@ -1042,11 +1067,11 @@ const AssessmentApp = (function() {
                 datasets: [{
                     label: 'Your Score',
                     data: data,
-                    backgroundColor: 'rgba(194, 65, 12, 0.12)',
-                    borderColor: '#c2410c',
+                    backgroundColor: colors.fill,
+                    borderColor: colors.stroke,
                     borderWidth: 2,
-                    pointBackgroundColor: '#c2410c',
-                    pointBorderColor: '#fff',
+                    pointBackgroundColor: colors.point,
+                    pointBorderColor: colors.pointBorder,
                     pointBorderWidth: 2,
                     pointRadius: 5,
                     pointHoverRadius: 7
@@ -1063,17 +1088,17 @@ const AssessmentApp = (function() {
                         ticks: {
                             stepSize: 25,
                             backdropColor: 'transparent',
-                            color: '#94a3b8',
+                            color: colors.tickLabels,
                             font: { size: 11, family: 'Inter' }
                         },
                         grid: {
-                            color: '#e2e8f0'
+                            color: colors.grid
                         },
                         angleLines: {
-                            color: '#e2e8f0'
+                            color: colors.angleLines
                         },
                         pointLabels: {
-                            color: '#475569',
+                            color: colors.pointLabels,
                             font: { size: 12, weight: '500', family: 'Inter' }
                         }
                     }
@@ -1083,7 +1108,9 @@ const AssessmentApp = (function() {
                         display: false
                     },
                     tooltip: {
-                        backgroundColor: '#1e293b',
+                        backgroundColor: colors.tooltipBg,
+                        titleColor: colors.tooltipText,
+                        bodyColor: colors.tooltipText,
                         titleFont: { family: 'Inter', size: 13 },
                         bodyFont: { family: 'Inter', size: 13 },
                         padding: 12,
@@ -1139,6 +1166,43 @@ const AssessmentApp = (function() {
     });
 
     // ============================================
+    // THEME MANAGEMENT
+    // ============================================
+
+    function initTheme() {
+        const stored = localStorage.getItem('sba-theme');
+        if (stored === 'dark' || stored === 'light') {
+            applyTheme(stored);
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            applyTheme('dark');
+        } else {
+            applyTheme('light');
+        }
+    }
+
+    function applyTheme(theme) {
+        const html = document.documentElement;
+        if (theme === 'dark') {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
+        localStorage.setItem('sba-theme', theme);
+
+        // Re-render chart if it exists and results are visible
+        if (radarChartInstance && !getEl('results-section').classList.contains('hidden')) {
+            const scores = calculateScores();
+            renderRadarChart(scores.categories);
+        }
+    }
+
+    function toggleTheme() {
+        const isDark = document.documentElement.classList.contains('dark');
+        applyTheme(isDark ? 'light' : 'dark');
+        lucide.createIcons();
+    }
+
+    // ============================================
     // PUBLIC API
     // ============================================
 
@@ -1147,7 +1211,9 @@ const AssessmentApp = (function() {
         restartAssessment,
         selectOption,
         goNext,
-        goBack
+        goBack,
+        toggleTheme,
+        initTheme
     };
 
 })();
@@ -1155,7 +1221,8 @@ const AssessmentApp = (function() {
 // Expose to global scope for HTML onclick handlers
 window.app = AssessmentApp;
 
-// Initialize icons on load
+// Initialize on load
 document.addEventListener('DOMContentLoaded', function() {
+    AssessmentApp.initTheme();
     lucide.createIcons();
 });

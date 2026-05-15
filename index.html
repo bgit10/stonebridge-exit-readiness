@@ -1,31 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exit Readiness Assessment | StoneBridge Business Advisors</title>
     <meta name="description" content="Discover how ready your business is for a successful exit. A confidential assessment from StoneBridge Business Advisors.">
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    
+
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
                         stonebridge: {
+                            950: '#020617',
                             900: '#0f172a',
                             800: '#1e293b',
                             700: '#334155',
@@ -107,28 +109,34 @@
             }
         }
     </script>
-    
+
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="font-sans text-stonebridge-800 bg-sand-200 antialiased min-h-screen flex flex-col">
-    
+<body class="font-sans text-stonebridge-800 dark:text-stonebridge-200 bg-sand-200 dark:bg-stonebridge-950 antialiased min-h-screen flex flex-col transition-colors duration-300">
+
     <!-- Header -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-stonebridge-200">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-stonebridge-900/90 backdrop-blur-md border-b border-stonebridge-200 dark:border-stonebridge-700 transition-colors duration-300">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 bg-stonebridge-800 rounded-sm flex items-center justify-center">
-                        <span class="text-white font-serif text-lg font-bold leading-none">S</span>
+                    <div class="w-8 h-8 bg-stonebridge-800 dark:bg-stonebridge-100 rounded-sm flex items-center justify-center transition-colors duration-300">
+                        <span class="text-white dark:text-stonebridge-900 font-serif text-lg font-bold leading-none transition-colors duration-300">S</span>
                     </div>
                     <div class="flex flex-col">
-                        <span class="font-serif text-lg font-semibold text-stonebridge-900 leading-tight tracking-tight">StoneBridge</span>
-                        <span class="text-[10px] uppercase tracking-[0.15em] text-stonebridge-500 leading-tight">Business Advisors</span>
+                        <span class="font-serif text-lg font-semibold text-stonebridge-900 dark:text-white leading-tight tracking-tight transition-colors duration-300">StoneBridge</span>
+                        <span class="text-[10px] uppercase tracking-[0.15em] text-stonebridge-500 dark:text-stonebridge-400 leading-tight transition-colors duration-300">Business Advisors</span>
                     </div>
                 </div>
-                <div class="hidden sm:flex items-center gap-6 text-sm text-stonebridge-600">
-                    <span class="font-medium">Exit Readiness Assessment</span>
-                    <span class="text-stonebridge-300">|</span>
-                    <span class="text-stonebridge-400">Confidential &bull; No Obligation</span>
+                <div class="flex items-center gap-4">
+                    <div class="hidden sm:flex items-center gap-6 text-sm text-stonebridge-600 dark:text-stonebridge-400 transition-colors duration-300">
+                        <span class="font-medium">Exit Readiness Assessment</span>
+                        <span class="text-stonebridge-300 dark:text-stonebridge-600 transition-colors duration-300">|</span>
+                        <span class="text-stonebridge-400 dark:text-stonebridge-500 transition-colors duration-300">Confidential &bull; No Obligation</span>
+                    </div>
+                    <button id="theme-toggle" onclick="app.toggleTheme()" class="p-2 rounded-lg text-stonebridge-500 dark:text-stonebridge-400 hover:bg-stonebridge-100 dark:hover:bg-stonebridge-800 transition-all duration-300" aria-label="Toggle dark mode">
+                        <i data-lucide="moon" class="w-4 h-4 hidden dark:block"></i>
+                        <i data-lucide="sun" class="w-4 h-4 block dark:hidden"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -136,55 +144,55 @@
 
     <!-- Main Content -->
     <main class="flex-1 pt-16">
-        
+
         <!-- Landing Section -->
         <section id="landing-section" class="min-h-[calc(100vh-4rem)] flex items-center">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
                 <div class="text-center space-y-8 animate-fade-in-up">
-                    <div class="inline-flex items-center gap-2 px-4 py-2 bg-stonebridge-100 rounded-full text-sm font-medium text-stonebridge-700">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 bg-stonebridge-100 dark:bg-stonebridge-800 rounded-full text-sm font-medium text-stonebridge-700 dark:text-stonebridge-300 transition-colors duration-300">
                         <i data-lucide="shield-check" class="w-4 h-4"></i>
                         Confidential &mdash; No Data Stored
                     </div>
-                    
-                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-stonebridge-900 leading-tight max-w-3xl mx-auto">
-                        Is Your Business <em class="text-warm-700">Truly Ready</em> to Exit?
+
+                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-stonebridge-900 dark:text-white leading-tight max-w-3xl mx-auto transition-colors duration-300">
+                        Is Your Business <em class="text-warm-700 dark:text-warm-400">Truly Ready</em> to Exit?
                     </h1>
-                    
-                    <p class="text-lg sm:text-xl text-stonebridge-600 max-w-2xl mx-auto leading-relaxed">
-                        Most business owners discover they're far less prepared than they think. 
+
+                    <p class="text-lg sm:text-xl text-stonebridge-600 dark:text-stonebridge-400 max-w-2xl mx-auto leading-relaxed transition-colors duration-300">
+                        Most business owners discover they're far less prepared than they think.
                         This assessment reveals where you stand &mdash; and what to fix before buyers start looking.
                     </p>
-                    
+
                     <div class="grid sm:grid-cols-3 gap-6 max-w-2xl mx-auto pt-8">
-                        <div class="bg-white rounded-xl p-6 shadow-sm border border-stonebridge-100">
-                            <div class="w-10 h-10 bg-warm-50 rounded-lg flex items-center justify-center mb-4 mx-auto">
-                                <i data-lucide="bar-chart-3" class="w-5 h-5 text-warm-700"></i>
+                        <div class="bg-white dark:bg-stonebridge-800 rounded-xl p-6 shadow-sm border border-stonebridge-100 dark:border-stonebridge-700 transition-colors duration-300">
+                            <div class="w-10 h-10 bg-warm-50 dark:bg-warm-900/30 rounded-lg flex items-center justify-center mb-4 mx-auto transition-colors duration-300">
+                                <i data-lucide="bar-chart-3" class="w-5 h-5 text-warm-700 dark:text-warm-400"></i>
                             </div>
-                            <p class="text-sm font-medium text-stonebridge-800">6 Critical Categories</p>
-                            <p class="text-xs text-stonebridge-500 mt-1">Financial, operational, and market readiness</p>
+                            <p class="text-sm font-medium text-stonebridge-800 dark:text-stonebridge-200 transition-colors duration-300">6 Critical Categories</p>
+                            <p class="text-xs text-stonebridge-500 dark:text-stonebridge-400 mt-1 transition-colors duration-300">Financial, operational, and market readiness</p>
                         </div>
-                        <div class="bg-white rounded-xl p-6 shadow-sm border border-stonebridge-100">
-                            <div class="w-10 h-10 bg-warm-50 rounded-lg flex items-center justify-center mb-4 mx-auto">
-                                <i data-lucide="file-text" class="w-5 h-5 text-warm-700"></i>
+                        <div class="bg-white dark:bg-stonebridge-800 rounded-xl p-6 shadow-sm border border-stonebridge-100 dark:border-stonebridge-700 transition-colors duration-300">
+                            <div class="w-10 h-10 bg-warm-50 dark:bg-warm-900/30 rounded-lg flex items-center justify-center mb-4 mx-auto transition-colors duration-300">
+                                <i data-lucide="file-text" class="w-5 h-5 text-warm-700 dark:text-warm-400"></i>
                             </div>
-                            <p class="text-sm font-medium text-stonebridge-800">Personalized Report</p>
-                            <p class="text-xs text-stonebridge-500 mt-1">Insights tailored to your answers, not generic advice</p>
+                            <p class="text-sm font-medium text-stonebridge-800 dark:text-stonebridge-200 transition-colors duration-300">Personalized Report</p>
+                            <p class="text-xs text-stonebridge-500 dark:text-stonebridge-400 mt-1 transition-colors duration-300">Insights tailored to your answers, not generic advice</p>
                         </div>
-                        <div class="bg-white rounded-xl p-6 shadow-sm border border-stonebridge-100">
-                            <div class="w-10 h-10 bg-warm-50 rounded-lg flex items-center justify-center mb-4 mx-auto">
-                                <i data-lucide="trending-up" class="w-5 h-5 text-warm-700"></i>
+                        <div class="bg-white dark:bg-stonebridge-800 rounded-xl p-6 shadow-sm border border-stonebridge-100 dark:border-stonebridge-700 transition-colors duration-300">
+                            <div class="w-10 h-10 bg-warm-50 dark:bg-warm-900/30 rounded-lg flex items-center justify-center mb-4 mx-auto transition-colors duration-300">
+                                <i data-lucide="trending-up" class="w-5 h-5 text-warm-700 dark:text-warm-400"></i>
                             </div>
-                            <p class="text-sm font-medium text-stonebridge-800">Directional Valuation</p>
-                            <p class="text-xs text-stonebridge-500 mt-1">See how buyers might value your business today</p>
+                            <p class="text-sm font-medium text-stonebridge-800 dark:text-stonebridge-200 transition-colors duration-300">Directional Valuation</p>
+                            <p class="text-xs text-stonebridge-500 dark:text-stonebridge-400 mt-1 transition-colors duration-300">See how buyers might value your business today</p>
                         </div>
                     </div>
-                    
+
                     <div class="pt-8">
-                        <button onclick="app.startAssessment()" class="group inline-flex items-center gap-3 bg-stonebridge-800 hover:bg-stonebridge-900 text-white px-8 py-4 rounded-lg text-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                        <button onclick="app.startAssessment()" class="group inline-flex items-center gap-3 bg-stonebridge-800 hover:bg-stonebridge-900 dark:bg-warm-700 dark:hover:bg-warm-600 text-white px-8 py-4 rounded-lg text-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
                             Start Assessment
                             <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
                         </button>
-                        <p class="text-sm text-stonebridge-400 mt-4">Takes 4&ndash;6 minutes &bull; No email required</p>
+                        <p class="text-sm text-stonebridge-400 dark:text-stonebridge-500 mt-4 transition-colors duration-300">Takes 4&ndash;6 minutes &bull; No email required</p>
                     </div>
                 </div>
             </div>
@@ -193,34 +201,34 @@
         <!-- Assessment Section -->
         <section id="assessment-section" class="hidden min-h-[calc(100vh-4rem)]">
             <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-                
+
                 <!-- Progress Bar -->
                 <div class="mb-8 animate-fade-in">
                     <div class="flex items-center justify-between mb-3">
-                        <span id="category-label" class="text-sm font-semibold text-stonebridge-700">Financial Foundation</span>
-                        <span id="progress-text" class="text-sm text-stonebridge-500">Question 1 of 18</span>
+                        <span id="category-label" class="text-sm font-semibold text-stonebridge-700 dark:text-stonebridge-300 transition-colors duration-300">Financial Foundation</span>
+                        <span id="progress-text" class="text-sm text-stonebridge-500 dark:text-stonebridge-400 transition-colors duration-300">Question 1 of 18</span>
                     </div>
-                    <div class="h-2 bg-stonebridge-100 rounded-full overflow-hidden">
+                    <div class="h-2 bg-stonebridge-100 dark:bg-stonebridge-800 rounded-full overflow-hidden transition-colors duration-300">
                         <div id="progress-bar" class="h-full bg-gradient-to-r from-warm-600 to-warm-500 rounded-full transition-all duration-700 ease-out" style="width: 0%"></div>
                     </div>
                     <div id="category-dots" class="flex gap-1.5 mt-3">
                         <!-- Filled by JS -->
                     </div>
                 </div>
-                
+
                 <!-- Question Container -->
-                <div id="question-container" class="bg-white rounded-2xl shadow-sm border border-stonebridge-100 p-6 sm:p-10 min-h-[420px] flex flex-col">
+                <div id="question-container" class="bg-white dark:bg-stonebridge-800 rounded-2xl shadow-sm border border-stonebridge-100 dark:border-stonebridge-700 p-6 sm:p-10 min-h-[420px] flex flex-col transition-colors duration-300">
                     <!-- Filled by JS -->
                 </div>
-                
+
                 <!-- Navigation -->
                 <div class="flex items-center justify-between mt-6">
-                    <button id="back-btn" onclick="app.goBack()" class="hidden inline-flex items-center gap-2 text-stonebridge-500 hover:text-stonebridge-800 font-medium transition-colors px-4 py-2">
+                    <button id="back-btn" onclick="app.goBack()" class="hidden inline-flex items-center gap-2 text-stonebridge-500 dark:text-stonebridge-400 hover:text-stonebridge-800 dark:hover:text-stonebridge-200 font-medium transition-colors px-4 py-2">
                         <i data-lucide="arrow-left" class="w-4 h-4"></i>
                         Back
                     </button>
                     <div class="flex-1"></div>
-                    <button id="next-btn" onclick="app.goNext()" disabled class="inline-flex items-center gap-2 bg-stonebridge-800 disabled:bg-stonebridge-300 disabled:cursor-not-allowed text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:bg-stonebridge-900">
+                    <button id="next-btn" onclick="app.goNext()" disabled class="inline-flex items-center gap-2 bg-stonebridge-800 dark:bg-warm-700 disabled:bg-stonebridge-300 dark:disabled:bg-stonebridge-700 disabled:cursor-not-allowed text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:bg-stonebridge-900 dark:hover:bg-warm-600">
                         Continue
                         <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </button>
@@ -231,40 +239,40 @@
         <!-- Results Section -->
         <section id="results-section" class="hidden">
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16">
-                
+
                 <!-- Results Header -->
                 <div class="text-center mb-12 animate-fade-in-up">
-                    <div class="inline-flex items-center gap-2 px-4 py-2 bg-warm-50 rounded-full text-sm font-medium text-warm-800 mb-6">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 bg-warm-50 dark:bg-warm-900/20 rounded-full text-sm font-medium text-warm-800 dark:text-warm-300 mb-6 transition-colors duration-300">
                         <i data-lucide="award" class="w-4 h-4"></i>
                         Your Personalized Assessment
                     </div>
-                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-stonebridge-900 mb-4">
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-stonebridge-900 dark:text-white mb-4 transition-colors duration-300">
                         Your Exit Readiness Profile
                     </h2>
-                    <p class="text-stonebridge-600 max-w-xl mx-auto">
+                    <p class="text-stonebridge-600 dark:text-stonebridge-400 max-w-xl mx-auto transition-colors duration-300">
                         Based on your responses, here's how a sophisticated buyer would likely view your business today.
                     </p>
                 </div>
 
                 <!-- Score Card -->
-                <div class="bg-white rounded-2xl shadow-lg border border-stonebridge-100 p-6 sm:p-10 mb-8 animate-scale-in">
+                <div class="bg-white dark:bg-stonebridge-800 rounded-2xl shadow-lg border border-stonebridge-100 dark:border-stonebridge-700 p-6 sm:p-10 mb-8 animate-scale-in transition-colors duration-300">
                     <div class="grid lg:grid-cols-2 gap-8 items-center">
                         <!-- Score Display -->
                         <div class="text-center lg:text-left space-y-4">
                             <div class="inline-flex items-baseline gap-2">
-                                <span id="score-number" class="font-serif text-7xl sm:text-8xl font-bold text-stonebridge-900">0</span>
-                                <span class="text-2xl text-stonebridge-400 font-medium">/ 100</span>
+                                <span id="score-number" class="font-serif text-7xl sm:text-8xl font-bold text-stonebridge-900 dark:text-white transition-colors duration-300">0</span>
+                                <span class="text-2xl text-stonebridge-400 dark:text-stonebridge-500 font-medium transition-colors duration-300">/ 100</span>
                             </div>
                             <div>
                                 <div id="tier-badge" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold mb-3">
                                     <!-- Filled by JS -->
                                 </div>
-                                <p id="tier-description" class="text-stonebridge-600 leading-relaxed max-w-md">
+                                <p id="tier-description" class="text-stonebridge-600 dark:text-stonebridge-400 leading-relaxed max-w-md transition-colors duration-300">
                                     <!-- Filled by JS -->
                                 </p>
                             </div>
                         </div>
-                        
+
                         <!-- Radar Chart -->
                         <div class="relative h-72 sm:h-80">
                             <canvas id="radar-chart"></canvas>
@@ -274,8 +282,8 @@
 
                 <!-- Category Breakdown -->
                 <div class="mb-8">
-                    <h3 class="font-serif text-2xl font-bold text-stonebridge-900 mb-6 flex items-center gap-3">
-                        <i data-lucide="layers" class="w-6 h-6 text-warm-600"></i>
+                    <h3 class="font-serif text-2xl font-bold text-stonebridge-900 dark:text-white mb-6 flex items-center gap-3 transition-colors duration-300">
+                        <i data-lucide="layers" class="w-6 h-6 text-warm-600 dark:text-warm-400"></i>
                         Category Breakdown
                     </h3>
                     <div id="category-insights" class="grid sm:grid-cols-2 gap-4">
@@ -284,26 +292,26 @@
                 </div>
 
                 <!-- Action Items -->
-                <div class="bg-gradient-to-br from-stonebridge-800 to-stonebridge-900 rounded-2xl p-6 sm:p-10 text-white mb-8 animate-fade-in-up">
+                <div class="bg-gradient-to-br from-stonebridge-800 to-stonebridge-900 dark:from-stonebridge-950 dark:to-stonebridge-900 rounded-2xl p-6 sm:p-10 text-white mb-8 animate-fade-in-up transition-colors duration-300">
                     <h3 class="font-serif text-2xl font-bold mb-2 flex items-center gap-3">
                         <i data-lucide="target" class="w-6 h-6 text-warm-400"></i>
                         Highest-Leverage Actions
                     </h3>
-                    <p class="text-stonebridge-300 mb-6">Focus here first. These changes will have the biggest impact on your exit outcome.</p>
+                    <p class="text-stonebridge-300 dark:text-stonebridge-400 mb-6 transition-colors duration-300">Focus here first. These changes will have the biggest impact on your exit outcome.</p>
                     <div id="action-items" class="space-y-4">
                         <!-- Filled by JS -->
                     </div>
                 </div>
 
                 <!-- Buyer Perspective -->
-                <div class="bg-warm-50 border border-warm-200 rounded-2xl p-6 sm:p-8 mb-8 animate-fade-in-up">
+                <div class="bg-warm-50 dark:bg-warm-900/10 border border-warm-200 dark:border-warm-900/30 rounded-2xl p-6 sm:p-8 mb-8 animate-fade-in-up transition-colors duration-300">
                     <div class="flex items-start gap-4">
-                        <div class="w-10 h-10 bg-warm-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                            <i data-lucide="eye" class="w-5 h-5 text-warm-700"></i>
+                        <div class="w-10 h-10 bg-warm-100 dark:bg-warm-900/30 rounded-lg flex items-center justify-center flex-shrink-0 mt-1 transition-colors duration-300">
+                            <i data-lucide="eye" class="w-5 h-5 text-warm-700 dark:text-warm-400"></i>
                         </div>
                         <div>
-                            <h3 class="font-serif text-xl font-bold text-warm-900 mb-3">What Buyers Will See</h3>
-                            <p id="buyer-perspective" class="text-warm-800 leading-relaxed">
+                            <h3 class="font-serif text-xl font-bold text-warm-900 dark:text-warm-300 mb-3 transition-colors duration-300">What Buyers Will See</h3>
+                            <p id="buyer-perspective" class="text-warm-800 dark:text-warm-300/90 leading-relaxed transition-colors duration-300">
                                 <!-- Filled by JS -->
                             </p>
                         </div>
@@ -311,59 +319,59 @@
                 </div>
 
                 <!-- Valuation Estimate -->
-                <div class="bg-white rounded-2xl shadow-sm border border-stonebridge-100 p-6 sm:p-8 mb-8 animate-fade-in-up">
-                    <h3 class="font-serif text-xl font-bold text-stonebridge-900 mb-4 flex items-center gap-3">
-                        <i data-lucide="calculator" class="w-5 h-5 text-warm-600"></i>
+                <div class="bg-white dark:bg-stonebridge-800 rounded-2xl shadow-sm border border-stonebridge-100 dark:border-stonebridge-700 p-6 sm:p-8 mb-8 animate-fade-in-up transition-colors duration-300">
+                    <h3 class="font-serif text-xl font-bold text-stonebridge-900 dark:text-white mb-4 flex items-center gap-3 transition-colors duration-300">
+                        <i data-lucide="calculator" class="w-5 h-5 text-warm-600 dark:text-warm-400"></i>
                         Directional Valuation Estimate
                     </h3>
                     <div class="grid sm:grid-cols-3 gap-4 mb-4">
-                        <div class="bg-stonebridge-50 rounded-xl p-4">
-                            <p class="text-xs uppercase tracking-wider text-stonebridge-500 mb-1">Annual Revenue</p>
-                            <p id="val-revenue" class="text-lg font-semibold text-stonebridge-800">&mdash;</p>
+                        <div class="bg-stonebridge-50 dark:bg-stonebridge-900/50 rounded-xl p-4 transition-colors duration-300">
+                            <p class="text-xs uppercase tracking-wider text-stonebridge-500 dark:text-stonebridge-400 mb-1 transition-colors duration-300">Annual Revenue</p>
+                            <p id="val-revenue" class="text-lg font-semibold text-stonebridge-800 dark:text-stonebridge-200 transition-colors duration-300">&mdash;</p>
                         </div>
-                        <div class="bg-stonebridge-50 rounded-xl p-4">
-                            <p class="text-xs uppercase tracking-wider text-stonebridge-500 mb-1">Est. EBITDA</p>
-                            <p id="val-ebitda" class="text-lg font-semibold text-stonebridge-800">&mdash;</p>
+                        <div class="bg-stonebridge-50 dark:bg-stonebridge-900/50 rounded-xl p-4 transition-colors duration-300">
+                            <p class="text-xs uppercase tracking-wider text-stonebridge-500 dark:text-stonebridge-400 mb-1 transition-colors duration-300">Est. EBITDA</p>
+                            <p id="val-ebitda" class="text-lg font-semibold text-stonebridge-800 dark:text-stonebridge-200 transition-colors duration-300">&mdash;</p>
                         </div>
-                        <div class="bg-warm-50 rounded-xl p-4 border border-warm-200">
-                            <p class="text-xs uppercase tracking-wider text-warm-700 mb-1">Valuation Range</p>
-                            <p id="val-range" class="text-lg font-bold text-warm-800">&mdash;</p>
+                        <div class="bg-warm-50 dark:bg-warm-900/10 rounded-xl p-4 border border-warm-200 dark:border-warm-900/20 transition-colors duration-300">
+                            <p class="text-xs uppercase tracking-wider text-warm-700 dark:text-warm-400 mb-1 transition-colors duration-300">Valuation Range</p>
+                            <p id="val-range" class="text-lg font-bold text-warm-800 dark:text-warm-300 transition-colors duration-300">&mdash;</p>
                         </div>
                     </div>
-                    <div class="flex items-start gap-3 text-sm text-stonebridge-500 bg-stonebridge-50 rounded-lg p-4">
+                    <div class="flex items-start gap-3 text-sm text-stonebridge-500 dark:text-stonebridge-400 bg-stonebridge-50 dark:bg-stonebridge-900/30 rounded-lg p-4 transition-colors duration-300">
                         <i data-lucide="info" class="w-4 h-4 mt-0.5 flex-shrink-0"></i>
                         <p>
-                            This is a directional estimate based on typical lower-middle-market multiples and your inputs. 
-                            Actual valuation depends on industry, growth trajectory, buyer pool, deal structure, and many other factors. 
+                            This is a directional estimate based on typical lower-middle-market multiples and your inputs.
+                            Actual valuation depends on industry, growth trajectory, buyer pool, deal structure, and many other factors.
                             A formal valuation is essential before going to market.
                         </p>
                     </div>
                 </div>
 
                 <!-- CTA Section -->
-                <div class="text-center bg-white rounded-2xl shadow-lg border border-stonebridge-100 p-8 sm:p-12 animate-fade-in-up">
-                    <h3 class="font-serif text-2xl sm:text-3xl font-bold text-stonebridge-900 mb-4">
+                <div class="text-center bg-white dark:bg-stonebridge-800 rounded-2xl shadow-lg border border-stonebridge-100 dark:border-stonebridge-700 p-8 sm:p-12 animate-fade-in-up transition-colors duration-300">
+                    <h3 class="font-serif text-2xl sm:text-3xl font-bold text-stonebridge-900 dark:text-white mb-4 transition-colors duration-300">
                         You've Done the Hard Work.<br class="hidden sm:block"> Let's Make Sure the Exit Reflects It.
                     </h3>
-                    <p class="text-stonebridge-600 max-w-xl mx-auto mb-8">
-                        Every month of preparation can add meaningful value to your final number. 
+                    <p class="text-stonebridge-600 dark:text-stonebridge-400 max-w-xl mx-auto mb-8 transition-colors duration-300">
+                        Every month of preparation can add meaningful value to your final number.
                         The conversation is confidential, there's no obligation, and you'll walk away with clarity regardless.
                     </p>
-                    
+
                     <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-                        <a href="mailto:Taylor.Hess@stonebridgeba.com?subject=Exit%20Readiness%20Assessment%20Follow-Up" 
-                           class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-stonebridge-800 hover:bg-stonebridge-900 text-white px-8 py-4 rounded-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl">
+                        <a href="mailto:Taylor.Hess@stonebridgeba.com?subject=Exit%20Readiness%20Assessment%20Follow-Up"
+                           class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-stonebridge-800 hover:bg-stonebridge-900 dark:bg-warm-700 dark:hover:bg-warm-600 text-white px-8 py-4 rounded-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl">
                             <i data-lucide="calendar" class="w-5 h-5"></i>
                             Schedule a Confidential Consultation
                         </a>
-                        <a href="tel:7704025022" 
-                           class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white hover:bg-stonebridge-50 text-stonebridge-800 border-2 border-stonebridge-200 hover:border-stonebridge-300 px-8 py-4 rounded-lg font-medium transition-all duration-300">
+                        <a href="tel:7704025022"
+                           class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white hover:bg-stonebridge-50 dark:bg-stonebridge-700 dark:hover:bg-stonebridge-600 text-stonebridge-800 dark:text-white border-2 border-stonebridge-200 dark:border-stonebridge-600 hover:border-stonebridge-300 dark:hover:border-stonebridge-500 px-8 py-4 rounded-lg font-medium transition-all duration-300">
                             <i data-lucide="phone" class="w-5 h-5"></i>
                             Call Taylor: (770) 402-5022
                         </a>
                     </div>
-                    
-                    <div class="flex items-center justify-center gap-6 text-sm text-stonebridge-400">
+
+                    <div class="flex items-center justify-center gap-6 text-sm text-stonebridge-400 dark:text-stonebridge-500 transition-colors duration-300">
                         <span class="flex items-center gap-1.5">
                             <i data-lucide="lock" class="w-3.5 h-3.5"></i>
                             Strictly Confidential
@@ -381,27 +389,27 @@
 
                 <!-- Print / Share Actions -->
                 <div class="flex items-center justify-center gap-4 mt-8 print:hidden">
-                    <button onclick="window.print()" class="inline-flex items-center gap-2 text-stonebridge-500 hover:text-stonebridge-800 font-medium transition-colors px-4 py-2">
+                    <button onclick="window.print()" class="inline-flex items-center gap-2 text-stonebridge-500 dark:text-stonebridge-400 hover:text-stonebridge-800 dark:hover:text-stonebridge-200 font-medium transition-colors px-4 py-2">
                         <i data-lucide="printer" class="w-4 h-4"></i>
                         Print This Report
                     </button>
-                    <button onclick="app.restartAssessment()" class="inline-flex items-center gap-2 text-stonebridge-500 hover:text-stonebridge-800 font-medium transition-colors px-4 py-2">
+                    <button onclick="app.restartAssessment()" class="inline-flex items-center gap-2 text-stonebridge-500 dark:text-stonebridge-400 hover:text-stonebridge-800 dark:hover:text-stonebridge-200 font-medium transition-colors px-4 py-2">
                         <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
                         Retake Assessment
                     </button>
                 </div>
 
                 <!-- Footer -->
-                <footer class="mt-12 text-center text-sm text-stonebridge-400 pb-8">
+                <footer class="mt-12 text-center text-sm text-stonebridge-400 dark:text-stonebridge-500 pb-8 transition-colors duration-300">
                     <p class="mb-2">
-                        <span class="font-serif font-semibold text-stonebridge-600">StoneBridge Business Advisors</span>
+                        <span class="font-serif font-semibold text-stonebridge-600 dark:text-stonebridge-300 transition-colors duration-300">StoneBridge Business Advisors</span>
                     </p>
                     <p>
-                        <a href="https://stonebridgeba.com" class="hover:text-stonebridge-600 transition-colors">stonebridgeba.com</a>
+                        <a href="https://stonebridgeba.com" class="hover:text-stonebridge-600 dark:hover:text-stonebridge-300 transition-colors">stonebridgeba.com</a>
                         <span class="mx-2">&bull;</span>
-                        <a href="mailto:Taylor.Hess@stonebridgeba.com" class="hover:text-stonebridge-600 transition-colors">Taylor.Hess@stonebridgeba.com</a>
+                        <a href="mailto:Taylor.Hess@stonebridgeba.com" class="hover:text-stonebridge-600 dark:hover:text-stonebridge-300 transition-colors">Taylor.Hess@stonebridgeba.com</a>
                         <span class="mx-2">&bull;</span>
-                        <a href="tel:7704025022" class="hover:text-stonebridge-600 transition-colors">(770) 402-5022</a>
+                        <a href="tel:7704025022" class="hover:text-stonebridge-600 dark:hover:text-stonebridge-300 transition-colors">(770) 402-5022</a>
                     </p>
                 </footer>
             </div>
