@@ -755,11 +755,11 @@ const AssessmentApp = (function() {
                     <span class="text-xs uppercase tracking-wider text-warm-600 font-semibold mb-2 block">
                         ${CATEGORIES.find(c => c.id === question.category).name}
                     </span>
-                    <h3 class="font-serif text-2xl sm:text-3xl font-bold text-stonebridge-900 leading-tight">
+                    <h3 class="font-serif text-2xl sm:text-3xl font-bold text-stonebridge-900 dark:text-white leading-tight">
                         ${question.text}
                     </h3>
                     ${question.help ? `
-                        <div class="tooltip-trigger inline-flex items-center gap-1.5 mt-3 text-sm text-stonebridge-500 hover:text-stonebridge-700 transition-colors">
+                        <div class="tooltip-trigger inline-flex items-center gap-1.5 mt-3 text-sm text-stonebridge-500 dark:text-stonebridge-400 hover:text-stonebridge-700 dark:hover:text-stonebridge-300 transition-colors">
                             <i data-lucide="help-circle" class="w-4 h-4"></i>
                             <span class="border-b border-dotted border-current">What is this?</span>
                             <div class="tooltip-content">
@@ -966,10 +966,10 @@ const AssessmentApp = (function() {
             card.className = `insight-card stagger-${idx + 1} animate-fade-in-up`;
             card.innerHTML = `
                 <div class="flex items-center justify-between mb-3">
-                    <h4 class="font-semibold text-stonebridge-800">${cat.name}</h4>
+                    <h4 class="font-semibold text-stonebridge-800 dark:text-stonebridge-200">${cat.name}</h4>
                     <span class="insight-score ${label.class}">${label.text} &middot; ${score}/100</span>
                 </div>
-                <p class="text-sm text-stonebridge-600 leading-relaxed">${insightText}</p>
+                <p class="text-sm text-stonebridge-600 dark:text-stonebridge-400 leading-relaxed">${insightText}</p>
             `;
             insightsContainer.appendChild(card);
         });
