@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exit Readiness Assessment | StoneBridge Business Advisors</title>
+    <meta name="description" content="Discover how ready your business is for a successful exit. A confidential assessment from StoneBridge Business Advisors.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        stonebridge: {
+                            900: '#0f172a',
+                            800: '#1e293b',
+                            700: '#334155',
+                            600: '#475569',
+                            500: '#64748b',
+                            400: '#94a3b8',
+                            300: '#cbd5e1',
+                            200: '#e2e8f0',
+                            100: '#f1f5f9',
+                            50: '#f8fafc',
+                        },
+                        warm: {
+                            900: '#7c2d12',
+                            800: '#9a3412',
+                            700: '#c2410c',
+                            600: '#ea580c',
+                            500: '#f97316',
+                            400: '#fb923c',
+                            300: '#fdba74',
+                            200: '#fed7aa',
+                            100: '#ffedd5',
+                            50: '#fff7ed',
+                        },
+                        sand: {
+                            900: '#44403c',
+                            800: '#57534e',
+                            700: '#78716c',
+                            600: '#a8a29e',
+                            500: '#d6d3d1',
+                            400: '#e7e5e4',
+                            300: '#f5f5f4',
+                            200: '#fafaf9',
+                            100: '#fafaf9',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'fade-in-up': 'fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'slide-in-right': 'slideInRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'slide-in-left': 'slideInLeft 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'scale-in': 'scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'progress-fill': 'progressFill 1s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'pulse-soft': 'pulseSoft 2s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(24px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        slideInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(40px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        slideInLeft: {
+                            '0%': { opacity: '0', transform: 'translateX(-40px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        scaleIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.95)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
+                        },
+                        progressFill: {
+                            '0%': { width: '0%' },
+                        },
+                        pulseSoft: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0.7' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-sans text-stonebridge-800 bg-sand-200 antialiased min-h-screen flex flex-col">
+    
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-stonebridge-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-stonebridge-800 rounded-sm flex items-center justify-center">
+                        <span class="text-white font-serif text-lg font-bold leading-none">S</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-serif text-lg font-semibold text-stonebridge-900 leading-tight tracking-tight">StoneBridge</span>
+                        <span class="text-[10px] uppercase tracking-[0.15em] text-stonebridge-500 leading-tight">Business Advisors</span>
+                    </div>
+                </div>
+                <div class="hidden sm:flex items-center gap-6 text-sm text-stonebridge-600">
+                    <span class="font-medium">Exit Readiness Assessment</span>
+                    <span class="text-stonebridge-300">|</span>
+                    <span class="text-stonebridge-400">Confidential &bull; No Obligation</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 pt-16">
+        
+        <!-- Landing Section -->
+        <section id="landing-section" class="min-h-[calc(100vh-4rem)] flex items-center">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+                <div class="text-center space-y-8 animate-fade-in-up">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 bg-stonebridge-100 rounded-full text-sm font-medium text-stonebridge-700">
+                        <i data-lucide="shield-check" class="w-4 h-4"></i>
+                        Confidential &mdash; No Data Stored
+                    </div>
+                    
+                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-stonebridge-900 leading-tight max-w-3xl mx-auto">
+                        Is Your Business <em class="text-warm-700">Truly Ready</em> to Exit?
+                    </h1>
+                    
+                    <p class="text-lg sm:text-xl text-stonebridge-600 max-w-2xl mx-auto leading-relaxed">
+                        Most business owners discover they're far less prepared than they think. 
+                        This assessment reveals where you stand &mdash; and what to fix before buyers start looking.
+                    </p>
+                    
+                    <div class="grid sm:grid-cols-3 gap-6 max-w-2xl mx-auto pt-8">
+                        <div class="bg-white rounded-xl p-6 shadow-sm border border-stonebridge-100">
+                            <div class="w-10 h-10 bg-warm-50 rounded-lg flex items-center justify-center mb-4 mx-auto">
+                                <i data-lucide="bar-chart-3" class="w-5 h-5 text-warm-700"></i>
+                            </div>
+                            <p class="text-sm font-medium text-stonebridge-800">6 Critical Categories</p>
+                            <p class="text-xs text-stonebridge-500 mt-1">Financial, operational, and market readiness</p>
+                        </div>
+                        <div class="bg-white rounded-xl p-6 shadow-sm border border-stonebridge-100">
+                            <div class="w-10 h-10 bg-warm-50 rounded-lg flex items-center justify-center mb-4 mx-auto">
+                                <i data-lucide="file-text" class="w-5 h-5 text-warm-700"></i>
+                            </div>
+                            <p class="text-sm font-medium text-stonebridge-800">Personalized Report</p>
+                            <p class="text-xs text-stonebridge-500 mt-1">Insights tailored to your answers, not generic advice</p>
+                        </div>
+                        <div class="bg-white rounded-xl p-6 shadow-sm border border-stonebridge-100">
+                            <div class="w-10 h-10 bg-warm-50 rounded-lg flex items-center justify-center mb-4 mx-auto">
+                                <i data-lucide="trending-up" class="w-5 h-5 text-warm-700"></i>
+                            </div>
+                            <p class="text-sm font-medium text-stonebridge-800">Directional Valuation</p>
+                            <p class="text-xs text-stonebridge-500 mt-1">See how buyers might value your business today</p>
+                        </div>
+                    </div>
+                    
+                    <div class="pt-8">
+                        <button onclick="app.startAssessment()" class="group inline-flex items-center gap-3 bg-stonebridge-800 hover:bg-stonebridge-900 text-white px-8 py-4 rounded-lg text-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                            Start Assessment
+                            <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                        </button>
+                        <p class="text-sm text-stonebridge-400 mt-4">Takes 4&ndash;6 minutes &bull; No email required</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Assessment Section -->
+        <section id="assessment-section" class="hidden min-h-[calc(100vh-4rem)]">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+                
+                <!-- Progress Bar -->
+                <div class="mb-8 animate-fade-in">
+                    <div class="flex items-center justify-between mb-3">
+                        <span id="category-label" class="text-sm font-semibold text-stonebridge-700">Financial Foundation</span>
+                        <span id="progress-text" class="text-sm text-stonebridge-500">Question 1 of 18</span>
+                    </div>
+                    <div class="h-2 bg-stonebridge-100 rounded-full overflow-hidden">
+                        <div id="progress-bar" class="h-full bg-gradient-to-r from-warm-600 to-warm-500 rounded-full transition-all duration-700 ease-out" style="width: 0%"></div>
+                    </div>
+                    <div id="category-dots" class="flex gap-1.5 mt-3">
+                        <!-- Filled by JS -->
+                    </div>
+                </div>
+                
+                <!-- Question Container -->
+                <div id="question-container" class="bg-white rounded-2xl shadow-sm border border-stonebridge-100 p-6 sm:p-10 min-h-[420px] flex flex-col">
+                    <!-- Filled by JS -->
+                </div>
+                
+                <!-- Navigation -->
+                <div class="flex items-center justify-between mt-6">
+                    <button id="back-btn" onclick="app.goBack()" class="hidden inline-flex items-center gap-2 text-stonebridge-500 hover:text-stonebridge-800 font-medium transition-colors px-4 py-2">
+                        <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                        Back
+                    </button>
+                    <div class="flex-1"></div>
+                    <button id="next-btn" onclick="app.goNext()" disabled class="inline-flex items-center gap-2 bg-stonebridge-800 disabled:bg-stonebridge-300 disabled:cursor-not-allowed text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:bg-stonebridge-900">
+                        Continue
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section id="results-section" class="hidden">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16">
+                
+                <!-- Results Header -->
+                <div class="text-center mb-12 animate-fade-in-up">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 bg-warm-50 rounded-full text-sm font-medium text-warm-800 mb-6">
+                        <i data-lucide="award" class="w-4 h-4"></i>
+                        Your Personalized Assessment
+                    </div>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-stonebridge-900 mb-4">
+                        Your Exit Readiness Profile
+                    </h2>
+                    <p class="text-stonebridge-600 max-w-xl mx-auto">
+                        Based on your responses, here's how a sophisticated buyer would likely view your business today.
+                    </p>
+                </div>
+
+                <!-- Score Card -->
+                <div class="bg-white rounded-2xl shadow-lg border border-stonebridge-100 p-6 sm:p-10 mb-8 animate-scale-in">
+                    <div class="grid lg:grid-cols-2 gap-8 items-center">
+                        <!-- Score Display -->
+                        <div class="text-center lg:text-left space-y-4">
+                            <div class="inline-flex items-baseline gap-2">
+                                <span id="score-number" class="font-serif text-7xl sm:text-8xl font-bold text-stonebridge-900">0</span>
+                                <span class="text-2xl text-stonebridge-400 font-medium">/ 100</span>
+                            </div>
+                            <div>
+                                <div id="tier-badge" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold mb-3">
+                                    <!-- Filled by JS -->
+                                </div>
+                                <p id="tier-description" class="text-stonebridge-600 leading-relaxed max-w-md">
+                                    <!-- Filled by JS -->
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Radar Chart -->
+                        <div class="relative h-72 sm:h-80">
+                            <canvas id="radar-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category Breakdown -->
+                <div class="mb-8">
+                    <h3 class="font-serif text-2xl font-bold text-stonebridge-900 mb-6 flex items-center gap-3">
+                        <i data-lucide="layers" class="w-6 h-6 text-warm-600"></i>
+                        Category Breakdown
+                    </h3>
+                    <div id="category-insights" class="grid sm:grid-cols-2 gap-4">
+                        <!-- Filled by JS -->
+                    </div>
+                </div>
+
+                <!-- Action Items -->
+                <div class="bg-gradient-to-br from-stonebridge-800 to-stonebridge-900 rounded-2xl p-6 sm:p-10 text-white mb-8 animate-fade-in-up">
+                    <h3 class="font-serif text-2xl font-bold mb-2 flex items-center gap-3">
+                        <i data-lucide="target" class="w-6 h-6 text-warm-400"></i>
+                        Highest-Leverage Actions
+                    </h3>
+                    <p class="text-stonebridge-300 mb-6">Focus here first. These changes will have the biggest impact on your exit outcome.</p>
+                    <div id="action-items" class="space-y-4">
+                        <!-- Filled by JS -->
+                    </div>
+                </div>
+
+                <!-- Buyer Perspective -->
+                <div class="bg-warm-50 border border-warm-200 rounded-2xl p-6 sm:p-8 mb-8 animate-fade-in-up">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 bg-warm-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                            <i data-lucide="eye" class="w-5 h-5 text-warm-700"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-serif text-xl font-bold text-warm-900 mb-3">What Buyers Will See</h3>
+                            <p id="buyer-perspective" class="text-warm-800 leading-relaxed">
+                                <!-- Filled by JS -->
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Valuation Estimate -->
+                <div class="bg-white rounded-2xl shadow-sm border border-stonebridge-100 p-6 sm:p-8 mb-8 animate-fade-in-up">
+                    <h3 class="font-serif text-xl font-bold text-stonebridge-900 mb-4 flex items-center gap-3">
+                        <i data-lucide="calculator" class="w-5 h-5 text-warm-600"></i>
+                        Directional Valuation Estimate
+                    </h3>
+                    <div class="grid sm:grid-cols-3 gap-4 mb-4">
+                        <div class="bg-stonebridge-50 rounded-xl p-4">
+                            <p class="text-xs uppercase tracking-wider text-stonebridge-500 mb-1">Annual Revenue</p>
+                            <p id="val-revenue" class="text-lg font-semibold text-stonebridge-800">&mdash;</p>
+                        </div>
+                        <div class="bg-stonebridge-50 rounded-xl p-4">
+                            <p class="text-xs uppercase tracking-wider text-stonebridge-500 mb-1">Est. EBITDA</p>
+                            <p id="val-ebitda" class="text-lg font-semibold text-stonebridge-800">&mdash;</p>
+                        </div>
+                        <div class="bg-warm-50 rounded-xl p-4 border border-warm-200">
+                            <p class="text-xs uppercase tracking-wider text-warm-700 mb-1">Valuation Range</p>
+                            <p id="val-range" class="text-lg font-bold text-warm-800">&mdash;</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3 text-sm text-stonebridge-500 bg-stonebridge-50 rounded-lg p-4">
+                        <i data-lucide="info" class="w-4 h-4 mt-0.5 flex-shrink-0"></i>
+                        <p>
+                            This is a directional estimate based on typical lower-middle-market multiples and your inputs. 
+                            Actual valuation depends on industry, growth trajectory, buyer pool, deal structure, and many other factors. 
+                            A formal valuation is essential before going to market.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- CTA Section -->
+                <div class="text-center bg-white rounded-2xl shadow-lg border border-stonebridge-100 p-8 sm:p-12 animate-fade-in-up">
+                    <h3 class="font-serif text-2xl sm:text-3xl font-bold text-stonebridge-900 mb-4">
+                        You've Done the Hard Work.<br class="hidden sm:block"> Let's Make Sure the Exit Reflects It.
+                    </h3>
+                    <p class="text-stonebridge-600 max-w-xl mx-auto mb-8">
+                        Every month of preparation can add meaningful value to your final number. 
+                        The conversation is confidential, there's no obligation, and you'll walk away with clarity regardless.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+                        <a href="mailto:Taylor.Hess@stonebridgeba.com?subject=Exit%20Readiness%20Assessment%20Follow-Up" 
+                           class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-stonebridge-800 hover:bg-stonebridge-900 text-white px-8 py-4 rounded-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl">
+                            <i data-lucide="calendar" class="w-5 h-5"></i>
+                            Schedule a Confidential Consultation
+                        </a>
+                        <a href="tel:7704025022" 
+                           class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white hover:bg-stonebridge-50 text-stonebridge-800 border-2 border-stonebridge-200 hover:border-stonebridge-300 px-8 py-4 rounded-lg font-medium transition-all duration-300">
+                            <i data-lucide="phone" class="w-5 h-5"></i>
+                            Call Taylor: (770) 402-5022
+                        </a>
+                    </div>
+                    
+                    <div class="flex items-center justify-center gap-6 text-sm text-stonebridge-400">
+                        <span class="flex items-center gap-1.5">
+                            <i data-lucide="lock" class="w-3.5 h-3.5"></i>
+                            Strictly Confidential
+                        </span>
+                        <span class="flex items-center gap-1.5">
+                            <i data-lucide="heart-handshake" class="w-3.5 h-3.5"></i>
+                            Relationship First
+                        </span>
+                        <span class="flex items-center gap-1.5">
+                            <i data-lucide="x-circle" class="w-3.5 h-3.5"></i>
+                            No Obligation
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Print / Share Actions -->
+                <div class="flex items-center justify-center gap-4 mt-8 print:hidden">
+                    <button onclick="window.print()" class="inline-flex items-center gap-2 text-stonebridge-500 hover:text-stonebridge-800 font-medium transition-colors px-4 py-2">
+                        <i data-lucide="printer" class="w-4 h-4"></i>
+                        Print This Report
+                    </button>
+                    <button onclick="app.restartAssessment()" class="inline-flex items-center gap-2 text-stonebridge-500 hover:text-stonebridge-800 font-medium transition-colors px-4 py-2">
+                        <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+                        Retake Assessment
+                    </button>
+                </div>
+
+                <!-- Footer -->
+                <footer class="mt-12 text-center text-sm text-stonebridge-400 pb-8">
+                    <p class="mb-2">
+                        <span class="font-serif font-semibold text-stonebridge-600">StoneBridge Business Advisors</span>
+                    </p>
+                    <p>
+                        <a href="https://stonebridgeba.com" class="hover:text-stonebridge-600 transition-colors">stonebridgeba.com</a>
+                        <span class="mx-2">&bull;</span>
+                        <a href="mailto:Taylor.Hess@stonebridgeba.com" class="hover:text-stonebridge-600 transition-colors">Taylor.Hess@stonebridgeba.com</a>
+                        <span class="mx-2">&bull;</span>
+                        <a href="tel:7704025022" class="hover:text-stonebridge-600 transition-colors">(770) 402-5022</a>
+                    </p>
+                </footer>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
